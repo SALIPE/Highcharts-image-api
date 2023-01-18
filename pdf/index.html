@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper {
+            width: 675px;
+            margin: auto;
+            background-color: #f2f3f4;
+            color: black;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        .wrapper img {
+            max-width: 100%;
+        }
+
+        .wrapper button {
+            float: right;
+            font-size: 15px;
+        }
+    </style>
+
+    <!-- html2canvas library -->
+    <script src="js/html2canvas.min.js"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script type="text/javascript">
+        window.jsPDF = window.jspdf.jsPDF;
+
+        window.addEventListener("load", (event) => {
+            carregar();
+        });
+
+
+
+        function Convert_HTML_To_PDF() {
+            var doc = new jsPDF();
+
+            // Source HTMLElement or a string containing HTML.
+            var elementHTML = document.querySelector("#contentToPrint");
+
+            doc.html(elementHTML, {
+                callback: function (doc) {
+                    // Save the PDF
+                    doc.save('document-html.pdf');
+                },
+                margin: [10, 10, 10, 10],
+                autoPaging: 'text',
+                x: 0,
+                y: 0,
+                width: 190, //target width in the PDF document
+                windowWidth: 675 //window width in CSS pixels
+            });
+        }
+
+        function ajax(url, data, yes, no) {
+            var r = new XMLHttpRequest();
+            r.open('post', url, true);
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.onreadystatechange = function () {
+                if (r.readyState === 4 && r.status === 200) {
+                    if (yes) {
+                        yes(r.responseText);
+                    }
+                } else if (r.readyState === 4) {
+                    if (no) {
+                        no(r.status, r.responseText);
+                    }
+                }
+            };
+            r.send(JSON.stringify(data));
+        }
+
+
+
+        function carregar() {
+            var preview = document.getElementsByClassName('preview-container');
+            for (let item of preview) {
+                item.innerHTML = '<div class="info">Processing chart, please wait..</div>';
+            }
+
+
+            ajax(
+                'http://export.highcharts.com/',
+                {
+                    "type": "png",
+                    "b64": true,
+                    "infile": {
+
+                        "title": {
+                            "text": "Comparative Chart"
+                        },
+                        "xAxis": {
+                            "categories": [
+                                "VALUE 1",
+                                "VALUE 2",
+                                "VALUE 3",
+                                "VALUE 4",
+                                "VALUE 5",
+                                "VALUE 6",
+                                "VALUE 7",
+                                "VALUE 8",
+                                "VALUE 9",
+                                "VALUE 10",
+                                "OUTROS"
+                            ]
+                        },
+                        "yAxis": {
+                            "title": {
+                                "text": "Amount"
+                            }
+                        },
+                        "plotOptions": {
+                            "series": {
+                                "dataLabels": {
+                                    "enabled": true,
+                                    "format": "{y} %"
+                                }
+                            }
+                        },
+                        "series": [
+                            {
+                                "type": "column",
+                                "name": 2021,
+                                "data": [
+                                    {
+                                        "name": "VALUE 1",
+                                        "y": 12.7
+                                    },
+                                    {
+                                        "name": "VALUE 2",
+                                        "y": 15.6
+                                    },
+                                    {
+                                        "name": "VALUE 3",
+                                        "y": 1.2
+                                    },
+                                    {
+                                        "name": "VALUE 4",
+                                        "y": 2.2
+                                    },
+                                    {
+                                        "name": "VALUE 5",
+                                        "y": 9.4
+                                    },
+                                    {
+                                        "name": "VALUE 6",
+                                        "y": 0.2
+                                    },
+                                    {
+                                        "name": "VALUE 7",
+                                        "y": 2.1
+                                    },
+                                    {
+                                        "name": "VALUE 8",
+                                        "y": 0.2
+                                    },
+                                    {
+                                        "name": "VALUE 9",
+                                        "y": 3.5
+                                    },
+                                    {
+                                        "name": "VALUE 10",
+                                        "y": 23.5
+                                    },
+                                    {
+                                        "name": "OUTROS",
+                                        "y": 29.4
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "column",
+                                "name": 2022,
+                                "data": [
+                                    {
+                                        "name": "VALUE 1",
+                                        "y": 30.4
+                                    },
+                                    {
+                                        "name": "VALUE 2",
+                                        "y": 19.8
+                                    },
+                                    {
+                                        "name": "VALUE 3",
+                                        "y": 7.2
+                                    },
+                                    {
+                                        "name": "VALUE 4",
+                                        "y": 4.7
+                                    },
+                                    {
+                                        "name": "VALUE 5",
+                                        "y": 4.4
+                                    },
+                                    {
+                                        "name": "VALUE 6",
+                                        "y": 4.3
+                                    },
+                                    {
+                                        "name": "VALUE 7",
+                                        "y": 4
+                                    },
+                                    {
+                                        "name": "VALUE 8",
+                                        "y": 4
+                                    },
+                                    {
+                                        "name": "VALUE 9",
+                                        "y": 3.4
+                                    },
+                                    {
+                                        "name": "VALUE 10",
+                                        "y": 3.2
+                                    },
+                                    {
+                                        "name": "OUTROS",
+                                        "y": 14.7
+                                    }
+                                ]
+                            }
+                        ],
+                        "credits": {
+                            "enabled": false
+                        }
+                    }
+                },
+                function (data) {
+
+                    console.log(data);
+                    for (let item of preview) {
+                        item.innerHTML = '<img src="data:image/png; base64,' + data + '"/>'
+                    }
+                },
+                function (r, txt) {
+                });
+        };
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <button onclick="Convert_HTML_To_PDF();">Download</button>
+            <div id="contentToPrint">
+                <h1>What is Lorem Ipsum?</h1>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.</p>
+                <div class="preview-container"></div>
+
+            </div>
+        </div>
+
+</body>
+
+</html>

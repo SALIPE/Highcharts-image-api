@@ -84,21 +84,20 @@ app.listen(PORT, () => {
 
 
 const teste = {
-    outfile: "//tmp//chart.png",
     type: 'png',
     options: {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            height: 600,
-            width: 1200
+        "chart": {
+            "plotBackgroundColor": null,
+            "plotBorderWidth": null,
+            "plotShadow": false,
+            "height": 600,
+            "width": 1200
         },
-        title: {
-            text: "Comparative Chart"
+        "title": {
+            "text": "Comparative Chart"
         },
-        xAxis: {
-            categories: [
+        "xAxis": {
+            "categories": [
                 "VALUE 1",
                 "VALUE 2",
                 "VALUE 3",
@@ -112,123 +111,123 @@ const teste = {
                 "OUTROS"
             ]
         },
-        yAxis: {
-            title: {
-                text: "Amount"
+        "yAxis": {
+            "title": {
+                "text": "Amount"
             }
         },
-        plotOptions: {
-            series: {
-                dataLabels: {
-                    enabled: true,
-                    format: "{y} %"
+        "plotOptions": {
+            "series": {
+                "dataLabels": {
+                    "enabled": true,
+                    "format": "{y} %"
                 }
             }
         },
-        series: [
+        "series": [
             {
-                type: "column",
-                name: 2021,
-                data: [
+                "type": "column",
+                "name": 2021,
+                "data": [
                     {
-                        name: "VALUE 1",
-                        y: 12.7
+                        "name": "VALUE 1",
+                        "y": 12.7
                     },
                     {
-                        name: "VALUE 2",
-                        y: 15.6
+                        "name": "VALUE 2",
+                        "y": 15.6
                     },
                     {
-                        name: "VALUE 3",
-                        y: 1.2
+                        "name": "VALUE 3",
+                        "y": 1.2
                     },
                     {
-                        name: "VALUE 4",
-                        y: 2.2
+                        "name": "VALUE 4",
+                        "y": 2.2
                     },
                     {
-                        name: "VALUE 5",
-                        y: 9.4
+                        "name": "VALUE 5",
+                        "y": 9.4
                     },
                     {
-                        name: "VALUE 6",
-                        y: 0.2
+                        "name": "VALUE 6",
+                        "y": 0.2
                     },
                     {
-                        name: "VALUE 7",
-                        y: 2.1
+                        "name": "VALUE 7",
+                        "y": 2.1
                     },
                     {
-                        name: "VALUE 8",
-                        y: 0.2
+                        "name": "VALUE 8",
+                        "y": 0.2
                     },
                     {
-                        name: "VALUE 9",
-                        y: 3.5
+                        "name": "VALUE 9",
+                        "y": 3.5
                     },
                     {
-                        name: "VALUE 10",
-                        y: 23.5
+                        "name": "VALUE 10",
+                        "y": 23.5
                     },
                     {
-                        name: "OUTROS",
-                        y: 29.4
+                        "name": "OUTROS",
+                        "y": 29.4
                     }
                 ]
             },
             {
-                type: "column",
-                name: 2022,
-                data: [
+                "type": "column",
+                "name": 2022,
+                "data": [
                     {
-                        name: "VALUE 1",
-                        y: 30.4
+                        "name": "VALUE 1",
+                        "y": 30.4
                     },
                     {
-                        name: "VALUE 2",
-                        y: 19.8
+                        "name": "VALUE 2",
+                        "y": 19.8
                     },
                     {
-                        name: "VALUE 3",
-                        y: 7.2
+                        "name": "VALUE 3",
+                        "y": 7.2
                     },
                     {
-                        name: "VALUE 4",
-                        y: 4.7
+                        "name": "VALUE 4",
+                        "y": 4.7
                     },
                     {
-                        name: "VALUE 5",
-                        y: 4.4
+                        "name": "VALUE 5",
+                        "y": 4.4
                     },
                     {
-                        name: "VALUE 6",
-                        y: 4.3
+                        "name": "VALUE 6",
+                        "y": 4.3
                     },
                     {
-                        name: "VALUE 7",
-                        y: 4
+                        "name": "VALUE 7",
+                        "y": 4
                     },
                     {
-                        name: "VALUE 8",
-                        y: 4
+                        "name": "VALUE 8",
+                        "y": 4
                     },
                     {
-                        name: "VALUE 9",
-                        y: 3.4
+                        "name": "VALUE 9",
+                        "y": 3.4
                     },
                     {
-                        name: "VALUE 10",
-                        y: 3.2
+                        "name": "VALUE 10",
+                        "y": 3.2
                     },
                     {
-                        name: "OUTROS",
-                        y: 14.7
+                        "name": "OUTROS",
+                        "y": 14.7
                     }
                 ]
             }
         ],
-        credits: {
-            enabled: false
+        "credits": {
+            "enabled": false
         }
     }
 
