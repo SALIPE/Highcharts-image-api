@@ -1,0 +1,17 @@
+{
+  "name": "highcharts-image-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "export ACCEPT_HIGHCHARTS_LICENSE=1 && export HIGHCHARTS_USE_MAPS=0 && export HIGHCHARTS_USE_GANTT=0",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "highcharts-export-server": "^2.1.0"
+  },
+  "devDependencies": {}
+}
